@@ -17,21 +17,13 @@ spec:
       containers:
         - name: next-in-k8s
           imagePullPolicy: Never
-          image: next-docker
+          image: next-docker-env-classic
           ports:
             - containerPort: 3000
               name: http
               protocol: TCP
-          volumeMounts:
-            - mountPath: /app/.env
-              name: env-configmap
-              readOnly: true
-              subPath: .env
-      volumes:
-        - configMap:
-            defaultMode: 420
-            items:
-              - key: .env
-                path: .env
-            name: env-configmap
-          name: env-configmap
+          env:
+            - name: USERNAME
+              value: "ServerK8s"
+            - name: NEXT_PUBLIC_USERNAME
+              value: "ClientK8s"

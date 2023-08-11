@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
+//output: "standalone",
 const nextConfig = {
-	output: "standalone",
 	publicRuntimeConfig: {
 		USERNAME: process.env.USERNAME,
 		NEXT_PUBLIC_USERNAME: process.env.NEXT_PUBLIC_USERNAME
