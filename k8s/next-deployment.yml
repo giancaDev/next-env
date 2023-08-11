@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: env-deploy
+  labels:
+    app: next-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: next-k8s
+  template:
+    metadata:
+      labels:
+        app: next-k8s
+    spec:
+      containers:
+        - name: next-in-k8s
+          imagePullPolicy: Never
+          image: next-docker
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /app/.env
+              name: env-configmap
+              readOnly: true
+              subPath: .env
+      volumes:
+        - configMap:
+            defaultMode: 420
+            items:
+              - key: .env
+                path: .env
+            name: env-configmap
+          name: env-configmap
