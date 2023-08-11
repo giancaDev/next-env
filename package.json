@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "cross-env USERNAME=ServerBuild NEXT_PUBLIC_USERNAME=Client next start",
+    "start": "next start",
     "lint": "next lint",
     "serv": "npm run build && npm run start"
   },
@@ -16,7 +16,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
-    "next": "13.4.12",
+    "next": "12.3.4",
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-dom": "18.2.0",

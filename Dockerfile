@@ -23,11 +23,6 @@ WORKDIR /app
 COPY --from=deps --link /app/node_modules ./node_modules
 COPY --link  . .
 
-#ARG USERNAME
-#ARG NEXT_PUBLIC_USERNAME
-#ENV USERNAME=$USERNAME
-#ENV NEXT_PUBLIC_USERNAME=$NEXT_PUBLIC_USERNAME
-
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
@@ -54,8 +49,12 @@ COPY --from=builder --link /app/public ./public
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
+
 COPY --from=builder --link --chown=1001:1001 /app/.next/standalone ./
 COPY --from=builder --link --chown=1001:1001 /app/.next/static ./.next/static
+
+COPY --from=builder --link /app/next.config.js ./next.config.js
+COPY --from=builder --link /app/server.js ./server.js
 
 USER nextjs
 
@@ -65,3 +64,4 @@ ENV PORT 3000
 ENV HOSTNAME localhost
 
 CMD ["node", "server.js"]
+#CMD ["next", "start"]

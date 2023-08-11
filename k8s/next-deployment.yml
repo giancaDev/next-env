@@ -22,16 +22,6 @@ spec:
             - containerPort: 3000
               name: http
               protocol: TCP
-          volumeMounts:
-            - mountPath: /app/.env
-              name: env-configmap
-              readOnly: true
-              subPath: .env
-      volumes:
-        - configMap:
-            defaultMode: 420
-            items:
-              - key: .env
-                path: .env
-            name: env-configmap
-          name: env-configmap
+          envFrom:
+            - configMapRef:
+                name: env-configmap

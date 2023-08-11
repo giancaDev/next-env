@@ -3,6 +3,5 @@ kind: ConfigMap
 metadata:
   name: env-configmap
 data:
-  .env: |-
-    USERNAME=ServerK8s
-    NEXT_PUBLIC_USERNAME=ClientK8s
+  USERNAME: "ServerK8sConfigmap"
+  NEXT_PUBLIC_USERNAME: "ClientK8sConfigmap"
