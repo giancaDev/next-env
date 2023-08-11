@@ -23,10 +23,10 @@ WORKDIR /app
 COPY --from=deps --link /app/node_modules ./node_modules
 COPY --link  . .
 
-ARG USERNAME
-ARG NEXT_PUBLIC_USERNAME
-ENV USERNAME=$USERNAME
-ENV NEXT_PUBLIC_USERNAME=$NEXT_PUBLIC_USERNAME
+#ARG USERNAME
+#ARG NEXT_PUBLIC_USERNAME
+#ENV USERNAME=$USERNAME
+#ENV NEXT_PUBLIC_USERNAME=$NEXT_PUBLIC_USERNAME
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry

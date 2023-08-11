@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "cross-env USERNAME=ServerBuild NEXT_PUBLIC_USERNAME=Client next start",
+    "lint": "next lint",
+    "serv": "npm run build && npm run start"
   },
   "dependencies": {
     "@types/node": "20.4.5",
@@ -21,5 +22,8 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
